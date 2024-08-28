@@ -183,7 +183,7 @@ public class Shop {
 
 
 // -----DELETE ORDER-----
-	static void deleteOrders(){
+	static void deleteOrder(){
 	OrderManager orderManager = OrderManager.getInstance();
 	Scanner scnr = new Scanner(System.in);
 	System.out.println("\n-----DELETE ORDER-----");
@@ -193,7 +193,10 @@ public class Shop {
 	for (Order deletedOrder : orderManager.orders) {
 		if (deletedOrder.orderNumber == Integer.parseInt(deletedOrderNumber)) {
 			orderManager.deleteOrder(deletedOrder);
-		}}}
+		}}
+
+		mainMenu();
+	}
 
 
 // -----NEW DAY-----
@@ -252,6 +255,7 @@ public class Shop {
 		System.out.println("6 - Add Dummy Orders");
 		System.out.println("7 - Add Random Order DEBUG");
 		System.out.println("8 - Add Custom Order DEBUG");
+		System.out.println("9 - Delete Order DEBUG");
 		
 		@SuppressWarnings("resource")
         Scanner scnr = new Scanner(System.in);
@@ -266,6 +270,7 @@ public class Shop {
                 case 6 -> createDummies();
                 case 7 -> debugCreateOrder();
 				case 8 -> createCustomOrder();
+				case 9 -> deleteOrder();
                 default -> {
                 }
             }
