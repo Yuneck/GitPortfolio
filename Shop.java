@@ -186,15 +186,18 @@ public class Shop {
 	static void deleteOrder(){
 	OrderManager orderManager = OrderManager.getInstance();
 	Scanner scnr = new Scanner(System.in);
+	int deletedOrderIndex = 0;
 	System.out.println("\n-----DELETE ORDER-----");
 	// Podanie numeru zamówienia
 	System.out.println("Put the order's number: ");
 	String deletedOrderNumber = scnr.next();
 	for (Order deletedOrder : orderManager.orders) {
 		if (deletedOrder.orderNumber == Integer.parseInt(deletedOrderNumber)) {
-			orderManager.deleteOrder(deletedOrder);
+			deletedOrderIndex = orderManager.orders.indexOf(deletedOrder);
 		}}
-
+		orderManager.orders.remove(deletedOrderIndex);
+		orderCounter--;
+		System.out.println("\nOrder number " + deletedOrderNumber + "is deleted.");
 		mainMenu();
 	}
 
